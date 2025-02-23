@@ -22,13 +22,19 @@ const allowedOrigins = [
   "https://api-2qzi.onrender.com"        // Allow localhost for development
 ];
 app.use(cors({
-  origin: allowedOrigins,
+  origin:'https://mern-frontend-hzei-chhayas-projects-d7e774f2.vercel.app',
   credentials: true, 
   methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
   allowedHeaders: "Content-Type,Authorization"
 }));
 
-app.options('*', cors());
+app.use(
+  cors({
+    origin: "*", // 🚨 Temporary fix (not safe for production)
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
+);
 
 
 // Middleware
