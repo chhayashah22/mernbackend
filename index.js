@@ -14,25 +14,29 @@ const PORT = process.env.PORT || 4000;
 
 // ****************CORS**************************
 
-const allowedOrigins = [
-    
- "https://mern-frontend-hzei.vercel.app",
- 'https://mern-frontend-hzei-chhayas-projects-d7e774f2.vercel.app',
- //   // Frontend URL
-  "https://api-2qzi.onrender.com"        // Allow localhost for development
-];
-app.use(cors({
-  origin:'https://mern-frontend-hzei-chhayas-projects-d7e774f2.vercel.app',
-  credentials: true, 
-  methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
-  allowedHeaders: "Content-Type,Authorization"
-}));
-
 app.use(
   cors({
-    origin: "*", // 🚨 Temporary fix (not safe for production)
+    origin: [
+      "https://mern-frontend-hzei-git-main-chhayas-projects-d7e774f2.vercel.app", // ✅ Add the correct frontend URL
+      "https://mern-frontend-hzei.vercel.app", // ✅ Also allow the main deployment
+    ],
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
+    credentials: true,
+  })
+);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+    credentials: true,
   })
 );
 
