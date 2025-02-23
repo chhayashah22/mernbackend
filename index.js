@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 
 const allowedOrigins = [
     
-  "http://localhost:5173"        // Allow localhost for development
+  "https://mern-frontend-hzei.vercel.app"        // Allow localhost for development
 ];
 app.use(cors({
   origin: allowedOrigins,
