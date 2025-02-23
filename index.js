@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 4000;
 
 const allowedOrigins = [
     
- "https://mern-frontend-hzei.vercel.app",  // Frontend URL
+ "https://mern-frontend-hzei.vercel.app",
+ 'https://mern-frontend-hzei-chhayas-projects-d7e774f2.vercel.app',
+ //   // Frontend URL
   "https://api-2qzi.onrender.com"        // Allow localhost for development
 ];
 app.use(cors({
