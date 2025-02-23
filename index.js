@@ -16,7 +16,8 @@ const PORT = process.env.PORT || 4000;
 
 const allowedOrigins = [
     
-  "https://mern-frontend-hzei.vercel.app"        // Allow localhost for development
+ "https://mern-frontend-hzei.vercel.app",  // Frontend URL
+  "https://api-2qzi.onrender.com"        // Allow localhost for development
 ];
 app.use(cors({
   origin: allowedOrigins,
@@ -24,6 +25,8 @@ app.use(cors({
   methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
   allowedHeaders: "Content-Type,Authorization"
 }));
+
+app.options('*', cors());
 
 
 // Middleware
